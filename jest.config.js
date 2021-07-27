@@ -3,9 +3,12 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   moduleNameMapper: {
-    "@galery/(.*)": "<rootDir>/src/$1"
+    "@gallery/(.*)": "<rootDir>/src/$1"
   },
+  testMatch: ["**/*.test.ts"],
   "coveragePathIgnorePatterns": [
-    "/node_modules/"
+    "/node_modules/",
+    "/dist",
+    "/coverage"
   ]
 };
