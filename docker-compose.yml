@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: gallery-db
+    restart: unless-stopped
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_DATABASE: gallery
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_PASSWORD: test
+      MYSQL_USER: user
+      SERVICE_TAGS: dev
+    networks:
+      - gallery
+  redis:
+    image: redis:4.0.14
+    container_name: gallery-redis
+    # have password root
+    command: redis-server --requirepass root
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - gallery
+networks:
+  gallery:
+    driver: bridge
