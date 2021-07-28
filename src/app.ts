@@ -1,18 +1,16 @@
+import "reflect-metadata";
 import "module-alias/register"
 import express from 'express'
 import dotEnv from 'dotenv'
-import {Service, ServiceTypes} from "@gallery/service/service"
-import {PictureService} from "@gallery/service/picture/picture-service"
+import {Service} from "@gallery/service/service"
+import {InversifyExpressServer} from "inversify-express-utils";
+import "@gallery/controller/picture/picture-controller"
 
 dotEnv.config()
 const app = express()
 
-const pictureService = Service.get<PictureService>(ServiceTypes.Picture)
+let server =  new InversifyExpressServer(Service, null, { rootPath: "/api" }, app);
 
-app.get('/', (req, res) => {
-    res.send(pictureService.index())
-})
-
-app.listen(process.env.API_PORT, () => {
-    console.log(`⚡️[server]: Server is running at http://${process.env.API_HOST}:${process.env.API_PORT}`);
-});
+let appConfigured = server.build();
+// @ts-ignore
+let serve = appConfigured.listen(process.env.API_PORT || 3000, () => console.log(`App running on ${serve.address().port}`));
