@@ -15,7 +15,7 @@ jest.mock("@gallery/service/picture/picture-service-impl", () => ({
 
 const pictureServiceMock = {
     index: jest.fn(),
-    indexAlbum: jest.fn()
+    update: jest.fn()
 } as PictureService
 
 const pictureController = new PictureController(pictureServiceMock)
