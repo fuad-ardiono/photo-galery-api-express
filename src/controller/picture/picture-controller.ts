@@ -7,10 +7,7 @@ import {ServiceTypes} from "@gallery/service/service"
 @controller("/picture")
 export class PictureController implements interfaces.Controller {
 
-    constructor(
-        @inject(ServiceTypes.Picture) private pictureService: PictureService
-    ) {
-    }
+    constructor(@inject(ServiceTypes.Picture) private readonly pictureService: PictureService) {}
 
     @httpGet("/")
     public async index(@request() request: express.Request, @response() response: express.Response) {

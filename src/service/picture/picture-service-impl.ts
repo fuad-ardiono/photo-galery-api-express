@@ -7,8 +7,6 @@ import {getCustomRepository} from "typeorm";
 
 @injectable()
 export class PictureServiceImpl implements PictureService {
-    constructor() { }
-
     async index(perPage: number, page: number, title: string|null): Promise<PaginationResponse<Photo[]>> {
         const photoRepository = await getCustomRepository(PhotoRepository)
 

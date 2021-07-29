@@ -5,6 +5,7 @@ import dotEnv from 'dotenv'
 import {InversifyExpressServer} from "inversify-express-utils";
 import {Service} from "@gallery/service/service";
 import "@gallery/controller/picture/picture-controller"
+import "@gallery/controller/album/album-controller"
 import * as fs from "fs";
 import {ConnectionOptions, createConnection} from "typeorm";
 import {Photo} from "@gallery/entity/photo";
