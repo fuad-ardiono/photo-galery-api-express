@@ -13,3 +13,8 @@ export class UpdatePictureRequest {
     @Expose({ name: "thumbnail_url" })
     thumbnailUrl: string
 }
+
+export class MovePictToNewAlbumRequest {
+    @Expose({ name: "picture_ids" })
+    pictureIds: number[]
+}

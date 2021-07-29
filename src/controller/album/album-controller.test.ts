@@ -14,7 +14,8 @@ jest.mock("@gallery/service/album/album-service-impl", () => ({
 }))
 
 const albumServiceMock = {
-    index: jest.fn()
+    index: jest.fn(),
+    delete: jest.fn()
 } as AlbumService
 
 const albumController = new AlbumController(albumServiceMock)

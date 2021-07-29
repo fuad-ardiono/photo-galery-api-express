@@ -1,4 +1,4 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {Photo} from "@gallery/entity/photo";
 
 @Entity({ name: "album" })
@@ -9,7 +9,8 @@ export class Album {
     @Column()
     title: string
 
-    @OneToMany(type => Photo, photo => photo.album)
+    @OneToMany(() => Photo, photo => photo.album)
+    @JoinColumn()
     photos: Photo[]
 
     @Column({ type: 'datetime', name: 'created_at', default: () => 'CURRENT_TIMESTAMP' })

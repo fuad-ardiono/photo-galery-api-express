@@ -1,4 +1,4 @@
-import {controller, httpGet, interfaces, request, response} from "inversify-express-utils";
+import {controller, httpDelete, httpGet, interfaces, request, requestParam, response} from "inversify-express-utils";
 import {AlbumService} from "@gallery/service/album/album-service";
 import express from "express";
 import {inject} from "inversify";
@@ -15,6 +15,13 @@ export class AlbumController implements interfaces.Controller {
             Number(request.query?.page),
             request.query?.title != '' && request.query?.title != undefined ? String(request.query?.title) : null
         )
+
+        return response.status(200).send(record)
+    }
+
+    @httpDelete("/:id")
+    public async delete(@requestParam("id") id: number, @response() response: express.Response) {
+        const record = await this.albumService.delete(id)
 
         return response.status(200).send(record)
     }

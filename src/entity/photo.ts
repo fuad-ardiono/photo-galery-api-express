@@ -6,9 +6,9 @@ export class Photo {
     @PrimaryGeneratedColumn()
     id: number
 
-    @ManyToOne(type => Album)
+    @ManyToOne(() => Album, album => album.photos)
     @JoinColumn({ name: "album_id" })
-    album: number
+    album: Album
 
     @Column({ name: "title" })
     title: string

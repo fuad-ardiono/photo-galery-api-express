@@ -24,6 +24,7 @@ export const httpRequestHandler = (error: DataNotFoundException, req: express.Re
             break
         }
         default: {
+            console.log(error)
             const response = new ExceptionResponse()
             response.message = "Something happen, please try again later"
             response.statusCode = 400

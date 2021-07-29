@@ -6,4 +6,8 @@ export interface PictureService {
     index(perPage: number, page: number, title: string|null): Promise<PaginationResponse<Photo[]>>
 
     update(id: number, request: UpdatePictureRequest): Promise<Photo>
+
+    delete(id: number): Promise<Photo>
+
+    movePhotoToNewAlbum(idAlbum: number, idPhotos: number[]): Promise<Photo[]>
 }

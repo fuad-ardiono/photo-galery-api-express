@@ -7,9 +7,17 @@ import {injectable} from "inversify";
 
 @injectable()
 export class AlbumServiceImpl implements AlbumService {
-    async index(perPage: number, page: number, title: string | null): Promise<PaginationResponse<Album[]>> {
-        const photoRepository = await getCustomRepository(AlbumRepository)
+    private albumRepository: AlbumRepository
 
-        return await photoRepository.findByPaginate(perPage, page, title)
+    constructor() {
+        this.albumRepository = getCustomRepository(AlbumRepository)
+    }
+
+    async index(perPage: number, page: number, title: string | null): Promise<PaginationResponse<Album[]>> {
+        return await this.albumRepository.findByPaginate(perPage, page, title)
+    }
+
+    async delete(id: number): Promise<Album> {
+        return await this.albumRepository.deleteById(id)
     }
 }
