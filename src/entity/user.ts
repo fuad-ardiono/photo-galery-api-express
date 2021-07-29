@@ -1,16 +1,19 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
-import {Photo} from "@gallery/entity/photo";
+import {Column, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn} from "typeorm";
+import {Role} from "@gallery/entity/role";
 
-@Entity({ name: "album" })
-export class Album {
+@Entity({ name: "user" })
+export class User {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
-    title: string
+    @Column({ name: "email" })
+    email: string
 
-    @OneToMany(type => Photo, photo => photo.album)
-    photos: Photo[]
+    @Column({ name: "name" })
+    name: string
+
+    @ManyToOne(type => Role)
+    @Column({ name: "role_id" })
 
     @Column({ type: 'datetime', name: 'created_at', default: () => 'CURRENT_TIMESTAMP' })
     createdAt: Date;

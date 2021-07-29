@@ -1,16 +1,12 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
-import {Photo} from "@gallery/entity/photo";
+import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
-@Entity({ name: "album" })
-export class Album {
+@Entity({ name: "role" })
+export class Role {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
-    title: string
-
-    @OneToMany(type => Photo, photo => photo.album)
-    photos: Photo[]
+    @Column({ name: "name" })
+    name: string
 
     @Column({ type: 'datetime', name: 'created_at', default: () => 'CURRENT_TIMESTAMP' })
     createdAt: Date;

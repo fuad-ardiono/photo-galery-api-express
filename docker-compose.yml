@@ -6,6 +6,8 @@ services:
     restart: unless-stopped
     ports:
       - "3308:3306"
+    volumes:
+      - ./gallery.sql:/docker-entrypoint-initdb.d/gallery.sql
     environment:
       MYSQL_DATABASE: gallery
       MYSQL_ROOT_PASSWORD: test

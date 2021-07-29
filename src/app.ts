@@ -2,8 +2,8 @@ import "reflect-metadata";
 import "module-alias/register"
 import express from 'express'
 import dotEnv from 'dotenv'
-import {Service} from "@gallery/service/service"
 import {InversifyExpressServer} from "inversify-express-utils";
+import {Service} from "@gallery/service/service";
 import "@gallery/controller/picture/picture-controller"
 import * as fs from "fs";
 import {ConnectionOptions, createConnection} from "typeorm";

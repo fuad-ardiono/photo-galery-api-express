@@ -1,16 +1,18 @@
-import {EntityRepository, IsNull, Like, Repository} from "typeorm";
+import {EntityRepository, IsNull, Like, Not, Repository} from "typeorm";
 import {Photo} from "@gallery/entity/photo";
 import {MetaPagination, PaginationResponse} from "@gallery/pojo/pagination";
 
 @EntityRepository(Photo)
 export class PhotoRepository extends Repository<Photo> {
-    async findByPaginate(perPage: number, page: number) {
+    async findByPaginate(perPage: number, page: number, title: string|null) {
         const [result, total] = await this.findAndCount({
+            relations: ['album'],
             order: {
                 createdAt: 'DESC'
             },
             where: {
-              deletedAt: IsNull()
+                deletedAt: IsNull(),
+                title: title ? Like(`%${title}%`) : Not(Like(""))
             },
             take: perPage,
             skip: page === 1 ? 0 : ((perPage * page) - perPage)

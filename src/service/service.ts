@@ -1,5 +1,5 @@
-import "reflect-metadata";
 import {Container} from "inversify";
+import "reflect-metadata";
 import {PictureService} from "./picture/picture-service";
 import {PictureServiceImpl} from "./picture/picture-service-impl";
 
