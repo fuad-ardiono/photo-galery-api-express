@@ -19,4 +19,4 @@ export class AlbumController implements interfaces.Controller {
         return response.status(200).send(record)
     }
 }
-``
+

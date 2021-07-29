@@ -4,14 +4,19 @@ import express from 'express'
 import dotEnv from 'dotenv'
 import {InversifyExpressServer} from "inversify-express-utils";
 import {Service} from "@gallery/service/service";
-import "@gallery/controller/picture/picture-controller"
-import "@gallery/controller/album/album-controller"
 import * as fs from "fs";
 import {ConnectionOptions, createConnection} from "typeorm";
 import {Photo} from "@gallery/entity/photo";
 import {Album} from "@gallery/entity/album";
 import {Role} from "@gallery/entity/role";
 import {User} from "@gallery/entity/user";
+import {dataNotFoundExceptionHandler} from "@gallery/exception/datanotfound-exception";
+import {unauthorizedExceptionHandler} from "@gallery/exception/unauthorized-exception";
+import bodyParser from "body-parser";
+
+import "@gallery/controller/auth/auth-controller"
+import "@gallery/controller/picture/picture-controller"
+import "@gallery/controller/album/album-controller"
 
 const envData: any = dotEnv.parse(fs.readFileSync(`.env`));
 const dbConfig: ConnectionOptions = {
@@ -28,6 +33,9 @@ const dbConfig: ConnectionOptions = {
 }
 
 const app = express()
+app.use(bodyParser.json())
+app.use(dataNotFoundExceptionHandler)
+app.use(unauthorizedExceptionHandler)
 
 createConnection(dbConfig).then(async connection => {
     console.log("Connected to DB")
