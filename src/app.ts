@@ -10,6 +10,8 @@ import * as fs from "fs";
 import {ConnectionOptions, createConnection} from "typeorm";
 import {Photo} from "@gallery/entity/photo";
 import {Album} from "@gallery/entity/album";
+import {Role} from "@gallery/entity/role";
+import {User} from "@gallery/entity/user";
 
 const envData: any = dotEnv.parse(fs.readFileSync(`.env`));
 const dbConfig: ConnectionOptions = {
@@ -19,7 +21,7 @@ const dbConfig: ConnectionOptions = {
     username: envData.DB_USER,
     password: envData.DB_PASSWORD,
     database: envData.DB_NAME,
-    entities: [Photo, Album],
+    entities: [Photo, Album, Role, User],
     synchronize: true,
     logging: false,
     logger: "advanced-console"

@@ -2,7 +2,7 @@ import "reflect-metadata";
 import {PictureController} from "@gallery/controller/picture/picture-controller";
 import {Request, Response} from "express";
 import {PictureService} from "@gallery/service/picture/picture-service";
-import {MetaPagination, PaginationResponse} from "@gallery/pojo/pagination";
+import {MetaPagination, PaginationResponse} from "@gallery/pojo/response/pagination-response";
 import {Photo} from "@gallery/entity/photo";
 
 jest.mock("express", () => ({
@@ -14,7 +14,8 @@ jest.mock("@gallery/service/picture/picture-service-impl", () => ({
 }))
 
 const pictureServiceMock = {
-    index: jest.fn()
+    index: jest.fn(),
+    indexAlbum: jest.fn()
 } as PictureService
 
 const pictureController = new PictureController(pictureServiceMock)

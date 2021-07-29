@@ -1,5 +1,5 @@
 import {AlbumService} from "@gallery/service/album/album-service";
-import {PaginationResponse} from "@gallery/pojo/pagination";
+import {PaginationResponse} from "@gallery/pojo/response/pagination-response";
 import {Album} from "@gallery/entity/album";
 import {getCustomRepository} from "typeorm";
 import {AlbumRepository} from "@gallery/repository/album-repository";

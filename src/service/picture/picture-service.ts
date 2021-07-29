@@ -1,4 +1,4 @@
-import {PaginationResponse} from "@gallery/pojo/pagination";
+import {PaginationResponse} from "@gallery/pojo/response/pagination-response";
 import {Photo} from "@gallery/entity/photo";
 
 export interface PictureService {

@@ -1,8 +1,8 @@
 import {controller, httpGet, interfaces, request, response} from "inversify-express-utils";
-import {inject} from "inversify";
-import {ServiceTypes} from "@gallery/service/service";
 import {AlbumService} from "@gallery/service/album/album-service";
 import express from "express";
+import {inject} from "inversify";
+import {ServiceTypes} from "@gallery/service/service";
 
 @controller("/album")
 export class AlbumController implements interfaces.Controller {

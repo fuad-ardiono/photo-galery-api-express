@@ -11,7 +11,10 @@ const ServiceTypes = {
 }
 
 const Service = new Container()
-Service.bind<PictureService>(ServiceTypes.Picture).to(PictureServiceImpl)
+Service.bind<AlbumService>(AlbumServiceImpl).toSelf()
 Service.bind<AlbumService>(ServiceTypes.Album).to(AlbumServiceImpl)
+
+Service.bind<PictureService>(PictureServiceImpl).toSelf()
+Service.bind<PictureService>(ServiceTypes.Picture).to(PictureServiceImpl)
 
 export { ServiceTypes, Service }

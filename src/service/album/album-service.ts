@@ -1,4 +1,4 @@
-import {PaginationResponse} from "@gallery/pojo/pagination";
+import {PaginationResponse} from "@gallery/pojo/response/pagination-response";
 import {Album} from "@gallery/entity/album";
 
 export interface AlbumService {

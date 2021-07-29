@@ -1,6 +1,6 @@
 import {EntityRepository, IsNull, Like, Not, Repository} from "typeorm";
 import {Album} from "@gallery/entity/album";
-import {MetaPagination, PaginationResponse} from "@gallery/pojo/pagination";
+import {MetaPagination, PaginationResponse} from "@gallery/pojo/response/pagination-response";
 
 @EntityRepository(Album)
 export class AlbumRepository extends Repository<Album> {

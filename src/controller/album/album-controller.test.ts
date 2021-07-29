@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import {Request, Response} from "express";
-import {MetaPagination, PaginationResponse} from "@gallery/pojo/pagination";
+import {MetaPagination, PaginationResponse} from "@gallery/pojo/response/pagination-response";
 import {Photo} from "@gallery/entity/photo";
 import {AlbumService} from "@gallery/service/album/album-service";
 import {AlbumController} from "@gallery/controller/album/album-controller";
