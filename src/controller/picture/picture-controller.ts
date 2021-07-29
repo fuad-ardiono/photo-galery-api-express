@@ -2,7 +2,7 @@ import {controller, httpGet, interfaces, response, request} from "inversify-expr
 import {inject} from "inversify"
 import express from "express"
 import {PictureService} from "@gallery/service/picture/picture-service"
-import {ServiceTypes} from "@gallery/service/service"
+import {ServiceTypes} from "@gallery/service/service-type";
 
 @controller("/picture")
 export class PictureController implements interfaces.Controller {

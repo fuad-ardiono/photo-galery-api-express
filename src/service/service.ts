@@ -4,17 +4,10 @@ import {PictureService} from "./picture/picture-service";
 import {PictureServiceImpl} from "./picture/picture-service-impl";
 import {AlbumService} from "@gallery/service/album/album-service";
 import {AlbumServiceImpl} from "@gallery/service/album/album-service-impl";
+import {ServiceTypes} from "@gallery/service/service-type";
 
-const ServiceTypes = {
-    Picture: Symbol.for("Picture"),
-    Album: Symbol.for("Album")
-}
-
-const Service = new Container()
-Service.bind<AlbumService>(AlbumServiceImpl).toSelf()
+const Service = new Container( { defaultScope: "Singleton" } )
 Service.bind<AlbumService>(ServiceTypes.Album).to(AlbumServiceImpl)
-
-Service.bind<PictureService>(PictureServiceImpl).toSelf()
 Service.bind<PictureService>(ServiceTypes.Picture).to(PictureServiceImpl)
 
-export { ServiceTypes, Service }
+export { Service }

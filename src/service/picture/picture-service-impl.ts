@@ -1,7 +1,7 @@
-import {injectable} from "inversify";
+import {inject, injectable} from "inversify";
 import {PictureService} from "./picture-service";
 import {PhotoRepository} from "@gallery/repository/photo-repository";
-import {PaginationResponse} from "@gallery/pojo/pagination";
+import {PaginationResponse} from "@gallery/pojo/response/pagination-response";
 import {Photo} from "@gallery/entity/photo";
 import {getCustomRepository} from "typeorm";
 
