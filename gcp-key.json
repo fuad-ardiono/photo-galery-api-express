@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "harmony-one-public-datasets",
+  "private_key_id": "2ad8c530250d690e19f0a6419f5be634c359e0fd",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDD88pgUQLg98Py\nUaXaYAN+O7yZf5ZyKt858D7ZKYz2ZvcCIm999COhUGsI2UFnjysyp8N5wt+ajKvr\nDVnPnnYCSJYPz6fERpGa8bCJYnVN2rrbdhANge38nM214+uQJdLIP/KfqWisqFqI\nWj+PKKPFZtpRZnVM1wbuny/2vEpshvp+8abbpdUjzwsGMmbw+r57I3LaoJcplqGZ\nDGmi1zEeVYY2UITpYwiNFlWDCdOtnf8q+J+ZvuGoGSoQGZXZ2AMWw1YTvl+SMxFw\nMlXeNWhWqpYnfomHC3DQMfCyK8lrGsMCc6+PBxmP7BS+A6llqPDcCtqm6fG+MffA\nLZep9SsvAgMBAAECggEAUgorVFkGkgbZ4IXDoSKqw7qh80hCRklhzWGjBovJa05f\no2KkeEDze/Ht5jYDlqaP6PTpN/zZXl0AC3i6/dxzvvAB99uye1AqXQtMpLB2uWJW\n8lRDU0xvReCmlb03nlHfppxzadplK0iPIuBaFQdoTdkKlaMGgGXUjqpSTAS4Sigb\nXLZ5LQuCPs2pie8Q81Pb7itJ7DGM7m/dIvGUg6ImN4FdS/CPKL/VL+hLl8MYUTtP\nEc0txW/5kkV+CnXde3Rx4gENzXg0fZ4BM92qqWHG2fBdG7N1LQ8+v4Ukyt/txfgr\n1uRzMwRBqKlNlKSqUci1kE7fNw+35ygiJ9IdM9q68QKBgQDpNXutyizUMeDq3/+c\nu5cATJtRRz1T7FDkOdqL9asNp7lUJsuqup62VX3D9KIv9g1KgHp5WIFVt1w+AEzE\nxDx6+uJkslUNaU0VwhwKmu1mVV4BsBdl5PL6+PafFb+O9OPV1pb2HN0xc4W3rBKm\n3PH7DYYFeM/RbPF2p8f9i7/nfwKBgQDXGjTFhSOamOBpeiOXq07cLDJ9mhdxDK8V\nZanAaAkxz7SvEeKsY2zbqyNoW/vn4PARrhGIuNy2AI+c6VaUKCRmI5X4G3D7MARl\nUwcmtlbAbDyx/F0MzEbqfG3OECnZWOLoRcOd24qSndzY2eKAjeIaczBECz3FjCM8\n6sVYh1kUUQKBgQCFdJXSXmBJDkIoJwegKbm/8hbv7FSsMhAYiwMGFRBOQC1OeuUS\nTrmEnmfaO6SUzbnNaLituHhLFSM0V/eWorX5qpjkBymlAx2Z1fs2FnLEnRWu4ZaC\nOQLTnKWFZGy64ml/dc3uCZaLNhDPiykhVE8l3BdWCkzjC/UiceGAtvibAQKBgHcx\n0mRRrrUQWeqY//gfuYdQBnqLVMoUWUDmIPa5r76mdl087/rO7ZeccfZ2YlTP1Lg3\nWQgGSGeiT/KHaq6Wv/TJa2Uc77KBnS34oFHXYKMoV0nZqkZZPELbyI0Tb9084CAN\n6KQk79jnGWYg9t59wPkfM3PBNu2tBinPfqPb/ITBAoGAGnpkqD5BXgqZi9J2Swr3\nRlg/D0ZTyqa4laVDpgQ+Mu+ZnqPIhyIoVIRKuvuKCfB0tzANpHietm8Oac6Fcpte\nMN3zqGmHoiLXfiBFtDgm4IMDAR8aj4Yuz45kNhnOs6QAoyg8ldswZGplQhNtzcRw\n/3jsqL5k/iJl5E9VWbKM0Ys=\n-----END PRIVATE KEY-----\n",
+  "client_email": "cloud-storage@harmony-one-public-datasets.iam.gserviceaccount.com",
+  "client_id": "108942573927005676832",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cloud-storage%40harmony-one-public-datasets.iam.gserviceaccount.com"
+}

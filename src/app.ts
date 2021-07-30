@@ -14,6 +14,7 @@ import bodyParser from "body-parser";
 import "@gallery/controller/auth/auth-controller"
 import "@gallery/controller/picture/picture-controller"
 import "@gallery/controller/album/album-controller"
+import "@gallery/controller/storage/storage-controller"
 import {httpRequestHandler} from "@gallery/middleware/http-request-handler";
 
 const envData: any = dotEnv.parse(fs.readFileSync(`.env`));
