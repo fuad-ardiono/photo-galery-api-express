@@ -14,6 +14,7 @@ import {inject} from "inversify";
 import {ServiceTypes} from "@gallery/service/service-type";
 import {classToPlain, plainToClass} from "class-transformer";
 import {CreateAlbumRequest} from "@gallery/pojo/request/album/create-album-request";
+import {adminMiddlewareHandler} from "@gallery/middleware/admin-middleware";
 
 @controller("/album")
 export class AlbumController implements interfaces.Controller {
@@ -30,14 +31,14 @@ export class AlbumController implements interfaces.Controller {
         return response.status(200).send(classToPlain(record))
     }
 
-    @httpPost("/")
+    @httpPost("/", adminMiddlewareHandler)
     public async create(@request() request: express.Request, @response() response: express.Response) {
         const record = await this.albumService.create(plainToClass(CreateAlbumRequest, request.body))
 
         return response.status(201).send(classToPlain(record))
     }
 
-    @httpDelete("/:id")
+    @httpDelete("/:id", adminMiddlewareHandler)
     public async delete(@requestParam("id") id: number, @response() response: express.Response) {
         const record = await this.albumService.delete(id)
 

@@ -35,7 +35,7 @@ export class PictureController implements interfaces.Controller {
         return response.status(200).send(classToPlain(record))
     }
 
-    @httpPost("/")
+    @httpPost("/", adminMiddlewareHandler)
     public async create(@request() request: express.Request, @response() response: express.Response) {
         let record = await this.pictureService.create(plainToClass(CreatePictureRequest, request.body))
 
@@ -53,7 +53,7 @@ export class PictureController implements interfaces.Controller {
         return response.status(201).send(classToPlain(record))
     }
 
-    @httpPut("/move/:idAlbum")
+    @httpPut("/move/:idAlbum", adminMiddlewareHandler)
     public async movePictToNewAlbum(
         @requestParam("idAlbum") idAlbum: number,
         @request() request: express.Request,
