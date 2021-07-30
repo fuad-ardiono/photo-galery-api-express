@@ -1,9 +1,19 @@
-import {controller, httpDelete, httpGet, interfaces, request, requestParam, response} from "inversify-express-utils";
+import {
+    controller,
+    httpDelete,
+    httpGet,
+    httpPost,
+    interfaces,
+    request,
+    requestParam,
+    response
+} from "inversify-express-utils";
 import {AlbumService} from "@gallery/service/album/album-service";
 import express from "express";
 import {inject} from "inversify";
 import {ServiceTypes} from "@gallery/service/service-type";
-import {classToPlain} from "class-transformer";
+import {classToPlain, plainToClass} from "class-transformer";
+import {CreateAlbumRequest} from "@gallery/pojo/request/album/create-album-request";
 
 @controller("/album")
 export class AlbumController implements interfaces.Controller {
@@ -18,6 +28,13 @@ export class AlbumController implements interfaces.Controller {
         )
 
         return response.status(200).send(classToPlain(record))
+    }
+
+    @httpPost("/")
+    public async create(@request() request: express.Request, @response() response: express.Response) {
+        const record = await this.albumService.create(plainToClass(CreateAlbumRequest, request.body))
+
+        return response.status(201).send(classToPlain(record))
     }
 
     @httpDelete("/:id")

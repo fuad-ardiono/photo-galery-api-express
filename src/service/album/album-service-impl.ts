@@ -4,6 +4,8 @@ import {Album} from "@gallery/entity/album";
 import {getCustomRepository} from "typeorm";
 import {AlbumRepository} from "@gallery/repository/album-repository";
 import {injectable} from "inversify";
+import {CreateAlbumRequest} from "@gallery/pojo/request/album/create-album-request";
+import {classToPlain, plainToClass} from "class-transformer";
 
 @injectable()
 export class AlbumServiceImpl implements AlbumService {
@@ -19,5 +21,13 @@ export class AlbumServiceImpl implements AlbumService {
 
     async delete(id: number): Promise<Album> {
         return await this.albumRepository.deleteById(id)
+    }
+
+    async create(request: CreateAlbumRequest): Promise<Album> {
+        let album: Album = new Album()
+        let requestJson = classToPlain(request)
+        let albumJson = classToPlain(album)
+
+        return await this.albumRepository.save(plainToClass(Album, Object.assign(albumJson, requestJson)))
     }
 }
