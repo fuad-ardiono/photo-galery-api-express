@@ -9,7 +9,8 @@ Photo galery API using Express.js with IoC dependency injection architecture
 3. Inversify
 4. Jest
 5. Typeorm
-6. Google Cloud Platform storage
+6. JWT
+7. Google Cloud Platform storage
 
 ## Stack used
 1. Mysql
