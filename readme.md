@@ -21,7 +21,7 @@ Photo galery API using Express.js with IoC dependency injection architecture
 [link](https://docs.docker.com/compose/install/)
 2. Type on your terminal `docker-compose up -d` to start mysql and importing photo galery data
 3. Install dependency `yarn install`
-4. Run this api with `npm run watch`
+4. Run this api with `yarn run watch`
 
 ## User
 1.Admin user `email: john@doe.co` `password: admin`
