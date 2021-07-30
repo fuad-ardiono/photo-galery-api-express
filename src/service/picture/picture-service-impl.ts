@@ -1,4 +1,4 @@
-import {inject, injectable} from "inversify";
+import {injectable} from "inversify";
 import {PictureService} from "./picture-service";
 import {PhotoRepository} from "@gallery/repository/photo-repository";
 import {PaginationResponse} from "@gallery/pojo/response/pagination-response";
@@ -6,6 +6,8 @@ import {Photo} from "@gallery/entity/photo";
 import {getCustomRepository} from "typeorm";
 import {UpdatePictureRequest} from "@gallery/pojo/request/picture/update-picture-request";
 import {AlbumRepository} from "@gallery/repository/album-repository";
+import {CreatePictureRequest} from "@gallery/pojo/request/picture/create-picture-request";
+import {classToPlain, plainToClass} from "class-transformer";
 
 @injectable()
 export class PictureServiceImpl implements PictureService {
@@ -39,5 +41,15 @@ export class PictureServiceImpl implements PictureService {
         }))
 
         return await this.photoRepository.save(updatePhotos)
+    }
+
+    async create(request: CreatePictureRequest): Promise<Photo> {
+        let photo: Photo = new Photo()
+        let photoJson = classToPlain(photo)
+        let requestJson = classToPlain(request)
+
+        let payload = plainToClass(Photo, Object.assign(photoJson, requestJson))
+
+        return await this.photoRepository.save(payload)
     }
 }

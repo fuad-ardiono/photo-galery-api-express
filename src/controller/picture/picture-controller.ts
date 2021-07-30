@@ -6,7 +6,7 @@ import {
     request,
     httpPut,
     requestParam,
-    httpDelete
+    httpDelete, httpPost
 } from "inversify-express-utils"
 import {inject} from "inversify"
 import express from "express"
@@ -16,6 +16,7 @@ import {adminMiddlewareHandler} from "@gallery/middleware/admin-middleware";
 import {classToPlain, plainToClass} from "class-transformer";
 import {MovePictToNewAlbumRequest, UpdatePictureRequest} from "@gallery/pojo/request/picture/update-picture-request";
 import {DataNotFoundException} from "@gallery/exception/datanotfound-exception";
+import {CreatePictureRequest} from "@gallery/pojo/request/picture/create-picture-request";
 
 @controller("/picture")
 export class PictureController implements interfaces.Controller {
@@ -34,6 +35,13 @@ export class PictureController implements interfaces.Controller {
         return response.status(200).send(classToPlain(record))
     }
 
+    @httpPost("/")
+    public async create(@request() request: express.Request, @response() response: express.Response) {
+        let record = await this.pictureService.create(plainToClass(CreatePictureRequest, request.body))
+
+        return response.status(200).send(classToPlain(record))
+    }
+
     @httpPut("/:id", adminMiddlewareHandler)
     public async update(
         @requestParam("id") id: number,
@@ -42,7 +50,7 @@ export class PictureController implements interfaces.Controller {
     ) {
         let record = await this.pictureService.update(id, plainToClass(UpdatePictureRequest, request.body))
 
-        return response.status(200).send(classToPlain(record))
+        return response.status(201).send(classToPlain(record))
     }
 
     @httpPut("/move/:idAlbum")
