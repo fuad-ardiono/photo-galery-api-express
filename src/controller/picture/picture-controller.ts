@@ -13,7 +13,7 @@ import express from "express"
 import {PictureService} from "@gallery/service/picture/picture-service"
 import {ServiceTypes} from "@gallery/service/service-type";
 import {adminMiddlewareHandler} from "@gallery/middleware/admin-middleware";
-import {plainToClass} from "class-transformer";
+import {classToPlain, plainToClass} from "class-transformer";
 import {MovePictToNewAlbumRequest, UpdatePictureRequest} from "@gallery/pojo/request/picture/update-picture-request";
 import {DataNotFoundException} from "@gallery/exception/datanotfound-exception";
 
@@ -31,7 +31,7 @@ export class PictureController implements interfaces.Controller {
             request.query?.title != '' && request.query?.title != undefined ? String(request.query?.title) : null
         )
 
-        return response.status(200).send(record)
+        return response.status(200).send(classToPlain(record))
     }
 
     @httpPut("/:id", adminMiddlewareHandler)
@@ -42,7 +42,7 @@ export class PictureController implements interfaces.Controller {
     ) {
         let record = await this.pictureService.update(id, plainToClass(UpdatePictureRequest, request.body))
 
-        return response.status(200).send(record)
+        return response.status(200).send(classToPlain(record))
     }
 
     @httpPut("/move/:idAlbum")
@@ -55,13 +55,13 @@ export class PictureController implements interfaces.Controller {
 
         let record = await this.pictureService.movePhotoToNewAlbum(idAlbum, requestClass.pictureIds)
 
-        return response.status(200).send(record)
+        return response.status(200).send(classToPlain(record))
     }
 
     @httpDelete("/:id", adminMiddlewareHandler)
     public async delete(@requestParam("id") id: number, @response() response: express.Response) {
         let record = await this.pictureService.delete(id)
 
-        return response.status(200).send(record)
+        return response.status(200).send(classToPlain(record))
     }
 }

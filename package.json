@@ -6,11 +6,11 @@
   "author": "Muhammad Fuad Ardiono",
   "license": "MIT",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
     "@types/jest": "^26.0.24",
-    "@types/node": "^16.4.3",
-    "@types/bcrypt": "^5.0.0",
     "@types/jsonwebtoken": "^8.5.4",
+    "@types/node": "^16.4.3",
     "jest": "^27.0.6",
     "nodemon": "^2.0.12",
     "ts-jest": "^27.0.4",
@@ -27,6 +27,7 @@
     "test": "jest --collect-coverage"
   },
   "dependencies": {
+    "@google-cloud/storage": "^5.11.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "class-transformer": "^0.4.0",

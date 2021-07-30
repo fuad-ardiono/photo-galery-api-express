@@ -3,6 +3,7 @@ import {AlbumService} from "@gallery/service/album/album-service";
 import express from "express";
 import {inject} from "inversify";
 import {ServiceTypes} from "@gallery/service/service-type";
+import {classToPlain} from "class-transformer";
 
 @controller("/album")
 export class AlbumController implements interfaces.Controller {
@@ -16,14 +17,14 @@ export class AlbumController implements interfaces.Controller {
             request.query?.title != '' && request.query?.title != undefined ? String(request.query?.title) : null
         )
 
-        return response.status(200).send(record)
+        return response.status(200).send(classToPlain(record))
     }
 
     @httpDelete("/:id")
     public async delete(@requestParam("id") id: number, @response() response: express.Response) {
         const record = await this.albumService.delete(id)
 
-        return response.status(200).send(record)
+        return response.status(200).send(classToPlain(record))
     }
 }
 
