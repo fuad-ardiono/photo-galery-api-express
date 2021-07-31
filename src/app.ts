@@ -40,8 +40,8 @@ createConnection(dbConfig).then(async connection => {
     let server =  new InversifyExpressServer(Service, null, { rootPath: "/api" }, app);
     server.setConfig((config) => {
         const corsClass = cors({origin: true})
-        app.use(corsClass);
-        app.options('*', corsClass);
+        config.use(corsClass);
+        config.options('*', corsClass);
         config.use(bodyParser.json())
     })
     server.setErrorConfig((config) => {

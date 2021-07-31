@@ -1,12 +1,13 @@
 import {
     controller,
+    httpDelete,
     httpGet,
-    interfaces,
-    response,
-    request,
+    httpPost,
     httpPut,
+    interfaces,
+    request,
     requestParam,
-    httpDelete, httpPost
+    response
 } from "inversify-express-utils"
 import {inject} from "inversify"
 import express from "express"
@@ -15,7 +16,6 @@ import {ServiceTypes} from "@gallery/service/service-type";
 import {adminMiddlewareHandler} from "@gallery/middleware/admin-middleware";
 import {classToPlain, plainToClass} from "class-transformer";
 import {MovePictToNewAlbumRequest, UpdatePictureRequest} from "@gallery/pojo/request/picture/update-picture-request";
-import {DataNotFoundException} from "@gallery/exception/datanotfound-exception";
 import {CreatePictureRequest} from "@gallery/pojo/request/picture/create-picture-request";
 
 @controller("/picture")

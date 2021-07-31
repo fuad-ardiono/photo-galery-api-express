@@ -8,6 +8,7 @@ import {UpdatePictureRequest} from "@gallery/pojo/request/picture/update-picture
 import {AlbumRepository} from "@gallery/repository/album-repository";
 import {CreatePictureRequest} from "@gallery/pojo/request/picture/create-picture-request";
 import {classToPlain, plainToClass} from "class-transformer";
+import {DataNotFoundException} from "@gallery/exception/datanotfound-exception";
 
 @injectable()
 export class PictureServiceImpl implements PictureService {
@@ -32,15 +33,22 @@ export class PictureServiceImpl implements PictureService {
     }
 
     async movePhotoToNewAlbum(idAlbum: number, idPhotos: number[]): Promise<Photo[]> {
-        let photosRecord = await this.photoRepository.findByIdArray(idPhotos)
-        let albumRecord = await this.albumRepository.findOneById(idAlbum)
+        console.log(idAlbum)
+        console.log(idPhotos)
+        try {
+            let photosRecord = await this.photoRepository.findByIdArray(idPhotos)
+            let albumRecord = await this.albumRepository.findOneById(idAlbum)
 
-        const updatePhotos: Photo[] = photosRecord.map((obj) => ({
-            ...obj,
-            album: albumRecord
-        }))
+            const updatePhotos: Photo[] = photosRecord.map((obj) => ({
+                ...obj,
+                album: albumRecord
+            }))
 
-        return await this.photoRepository.save(updatePhotos)
+            return await this.photoRepository.save(updatePhotos)
+        } catch (e) {
+            console.log(e)
+            throw new DataNotFoundException("err")
+        }
     }
 
     async create(request: CreatePictureRequest): Promise<Photo> {
