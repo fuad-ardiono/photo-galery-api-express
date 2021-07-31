@@ -5,6 +5,7 @@ import dotEnv from 'dotenv'
 import {InversifyExpressServer } from "inversify-express-utils";
 import {Service} from "@gallery/service/service";
 import * as fs from "fs";
+import cors from "cors";
 import {ConnectionOptions, createConnection} from "typeorm";
 import {Photo} from "@gallery/entity/photo";
 import {Album} from "@gallery/entity/album";
@@ -38,6 +39,9 @@ createConnection(dbConfig).then(async connection => {
 
     let server =  new InversifyExpressServer(Service, null, { rootPath: "/api" }, app);
     server.setConfig((config) => {
+        const corsClass = cors({origin: true})
+        app.use(corsClass);
+        app.options('*', corsClass);
         config.use(bodyParser.json())
     })
     server.setErrorConfig((config) => {

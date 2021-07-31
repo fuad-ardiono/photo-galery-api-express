@@ -9,6 +9,7 @@ export class AlbumRepository extends Repository<Album> {
 
     async findByPaginate(perPage: number, page: number, title: string|null) {
         const [result, total] = await this.findAndCount({
+            join: { alias: "album", innerJoinAndSelect: { photos: "album.photos" } },
             order: {
                 createdAt: 'DESC'
             },
