@@ -56,7 +56,9 @@ export class PictureServiceImpl implements PictureService {
         let photoJson = classToPlain(photo)
         let requestJson = classToPlain(request)
 
+        let albumRecord = await this.albumRepository.findOneById(request.albumId)
         let payload = plainToClass(Photo, Object.assign(photoJson, requestJson))
+        payload.album = albumRecord
 
         return await this.photoRepository.save(payload)
     }
