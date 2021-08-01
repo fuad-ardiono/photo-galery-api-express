@@ -9,7 +9,7 @@ import {getUnixTime} from "date-fns";
 @injectable()
 export class StorageServiceImpl implements StorageService {
     private cloudStorageClient: Storage
-    private bucketName: string = "gallery-photo-bucket"
+    private bucketName: string = "gallery-photo-bucket2"
 
     constructor() {
         this.cloudStorageClient = new Storage({
